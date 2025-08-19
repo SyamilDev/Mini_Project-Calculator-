@@ -336,11 +336,20 @@
                         current = '-' + current;
                     }
                 }
+                const expression = `${current}`;
+                history.push(expression);
+                if (history.length > 15) history.shift();
+                updateHistory();
                 updateDisplay();
             }
 
             function percent() {
+                const prev = current;
                 current = (parseFloat(current) / 100).toString();
+                const expression = `${prev} % = ${current}`;
+                history.push(expression);
+                if (history.length > 15) history.shift();
+                updateHistory();
                 updateDisplay();
             }
 
